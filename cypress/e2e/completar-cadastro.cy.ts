@@ -121,7 +121,7 @@ describe("Completar cadastro no sistema", () => {
         cy.get('[data-cy="documento-de-identificacao-com-f"]').click(); 
 
         cy.get('input[type="file"]')
-            .selectFile('cypress/fixtures/documento.pdf', { force: true });
+            .selectFile('cypress/fixtures/ExemploCNH.pdf', { force: true });
         
         cy.get('[data-cy="menu-salvar"]').click(); // Salvar o documento
         cy.wait(1000);
