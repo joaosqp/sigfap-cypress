@@ -109,9 +109,26 @@ describe("Completar cadastro no sistema", () => {
 
         // SALVAR - dados profissionais
         cy.get('[data-cy="menu-salvar"]').click();
+        // Aguardar um tempo para garantir que os dados sejam salvos antes de finalizar o cadastro
+        cy.wait(1000);
+
+        cy.get('[data-cy="documentos-pessoais"] > .css-nij9c8').click(); // Clicar na etapa de Documentos Pessoais
+        cy.wait(1000);
+
+        // Clicar para abrir o dropdown de categorias de documentos
+        cy.get('#select-categories-usuario-anexo').click(); 
+        // Marcar a checkbox "Documento de identificação com foto"
+        cy.get('[data-cy="documento-de-identificacao-com-f"]').click(); 
+
+        cy.get('input[type="file"]')
+            .selectFile('cypress/fixtures/documento.pdf', { force: true });
+        
+        cy.get('[data-cy="menu-salvar"]').click(); // Salvar o documento
+        cy.wait(1000);
 
         // Finalizar cadastro
-        //cy.get('[data-cy="finalizar"]').click();
+        cy.get('[data-cy="menu-finalizar"]').click(); // Clicar no botão Finalizar
+        cy.wait(1000); // Aguardar um tempo para garantir que o processo de finalização seja concluído
       });
     });
   });
