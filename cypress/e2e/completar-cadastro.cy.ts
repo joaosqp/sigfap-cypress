@@ -36,6 +36,7 @@ describe("Completar cadastro no sistema", () => {
 
         // Salvar dados de endereço
         cy.get('[data-cy="menu-salvar"]').click();
+        cy.wait(2000);
 
         // Clicar na etapa de Dados Acadêmicos
         cy.get('[data-cy="dados-academicos"]').click();
@@ -51,11 +52,11 @@ describe("Completar cadastro no sistema", () => {
         cy.get('[data-cy="ensino-superior"]').click(); // Clica na opção Ensino Superior
 
         // Preencher LinkedIn
-        cy.get('[data-cy="linkedin"]').type(dados.Linkedin);
+        cy.get('[data-cy="linkedin"]').clear().type(dados.Linkedin);
 
         // PRIMEIRO SALVAR - dados acadêmicos básicos
         cy.get('[data-cy="menu-salvar"]').click();
-
+        cy.wait(1000);
         // Adicionar Área de Conhecimento
         cy.get('[data-cy="add-areas-de-conhecimento"]').click(); // Clica no botão Adicionar
 
@@ -77,6 +78,37 @@ describe("Completar cadastro no sistema", () => {
 
         // SEGUNDO SALVAR - confirmar Área de Conhecimento
         cy.get('[data-cy="areaDeConhecimento-confirmar"]').click();
+        cy.wait(1000);
+
+        // Clicar na etapa de Dados Profissionais
+        cy.get('[data-cy="dados-profissionais"]').click(); // Clicar na etapa de Dados Profissionais
+        cy.wait(1000);
+
+        // Marcar a checkbox "Possui vínculo institucional"
+        cy.get('[data-cy="possui-vinculo-institucional-box"]').click(); // Desmarca e marca novamente para garantir que o estado seja atualizado
+
+        cy.get('[data-cy="search-tipo-vinculo-instituciona"]').click();
+        cy.get('.css-s7bijt > .css-oyk7i > [data-cy="outros"]').click(); // Seleciona "Outros"
+        cy.wait(1000);
+
+        // Marcar a checkbox "Possui vínculo empregatício"
+        cy.get('[data-cy="possui-vinculo-empregaticio-box"]').click(); // Desmarca e marca novamente para garantir que o estado seja atualizado
+        cy.wait(1000);
+        // Preencher "Início de serviço"
+        cy.get('[data-cy="vinculoInstitucional.inicioServico"]').clear().type(dados.datainicioservico);
+
+        // Preencher "Regime de trabalho"
+        cy.get('[data-cy="search-regime-trabalho-id"]').click();
+        cy.get('[data-cy="tempo-integral"]').click(); // Seleciona "Tempo Integral"
+
+        // Preencher "Função/Cargo"
+        cy.get('[data-cy="vinculoInstitucional.funcao"]').clear().type(dados.funcao);
+
+        // Preencher "Início de função/cargo"
+        cy.get('[data-cy="vinculoInstitucional.inicioFuncao"]').type(dados.datainiciofuncao);
+
+        // SALVAR - dados profissionais
+        cy.get('[data-cy="menu-salvar"]').click();
 
         // Finalizar cadastro
         //cy.get('[data-cy="finalizar"]').click();
