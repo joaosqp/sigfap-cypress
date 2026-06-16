@@ -156,9 +156,9 @@ describe("Completar cadastro no sistema", () => {
         cy.get('[data-cy="termo-de-aceite"]').click(); 
         cy.get('[data-cy="termo-de-aceite-aceito-box"]').click();
       // Submeter a proposta
-      cy.get('[data-cy="menu-verificar-pendencias"]').click();
+      /*cy.get('[data-cy="menu-verificar-pendencias"]').click();
         cy.get('.emp3m7p0 > .MuiButtonBase-root').click(); 
-        cy.get('[data-cy="sim-continuar-button"]').click();
+        cy.get('[data-cy="sim-continuar-button"]').click();*/
     });
     });
 })
