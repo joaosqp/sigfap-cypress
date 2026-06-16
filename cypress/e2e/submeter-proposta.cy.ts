@@ -15,11 +15,11 @@ describe("Completar cadastro no sistema", () => {
       cy.fixture("submeter-proposta").then((dados) => {
     
       // Clicar no botão "Ver mais" do edital para acessar a página de detalhes do edital
-      cy.get('[data-cy="editais-ver-mais"] > .css-18juej0').click(); 
+      cy.get('[data-cy="editais-ver-mais"]').click(); 
 
       // Procurar o edital específico "Edital 2026-0001 Sig Cypress" e clicar no botão "Visualizar edital" 
-      cy.get('.sc-bitYfk').type(dados.edital);
-        cy.get('.sc-dzsvhq').click(); 
+      cy.get('.css-1ihz0ac').type(dados.edital);
+        cy.get('.css-qvg66t').click(); 
         cy.get('[data-cy="criar-proposta"]').click(); // Clicar no botão "Criar proposta" para iniciar o processo de submissão da proposta
         cy.wait(1000); 
 
