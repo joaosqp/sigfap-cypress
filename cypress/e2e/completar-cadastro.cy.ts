@@ -85,14 +85,14 @@ describe("Completar cadastro no sistema", () => {
         cy.wait(1000);
 
         // Marcar a checkbox "Possui vínculo institucional"
-        cy.get('[data-cy="possui-vinculo-institucional-box"]').click(); // Desmarca e marca novamente para garantir que o estado seja atualizado
+        cy.get('[data-cy="possui-vinculo-institucional"]').check({ force: true });
 
         cy.get('[data-cy="search-tipo-vinculo-instituciona"]').click();
         cy.get('.css-s7bijt > .css-oyk7i > [data-cy="outros"]').click(); // Seleciona "Outros"
         cy.wait(1000);
 
         // Marcar a checkbox "Possui vínculo empregatício"
-        cy.get('[data-cy="possui-vinculo-empregaticio-box"]').click(); // Desmarca e marca novamente para garantir que o estado seja atualizado
+        cy.get('[data-cy="possui-vinculo-empregaticio"]').check({ force: true }); 
         cy.wait(1000);
         // Preencher "Início de serviço"
         cy.get('[data-cy="vinculoInstitucional.inicioServico"]').clear().type(dados.datainicioservico);
